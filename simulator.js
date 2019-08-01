@@ -13,7 +13,7 @@ const manager = {
 const manifest = {
   moziot: {
     config: {
-      mqtt: 'mqtt://keeper.local',
+      mqtt: 'mqtt://localhost',
       prefix: 'zigbee2mqtt',
     },
   },

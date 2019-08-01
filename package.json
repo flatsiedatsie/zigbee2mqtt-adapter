@@ -21,7 +21,10 @@
     "url": "https://github.com/kabbi/zigbee2mqtt-adapter/issues"
   },
   "dependencies": {
-    "mqtt": "^2.18.8"
+    "ajv": "^6.10.2",
+    "gateway-addon": "git+https://git@github.com/mozilla-iot/gateway-addon-node.git",
+    "mqtt": "^2.18.8",
+    "util": "^0.12.1"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
