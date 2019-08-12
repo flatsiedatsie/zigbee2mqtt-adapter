@@ -9,12 +9,53 @@
 
 'use strict';
 
+
+
 const mqtt = require('mqtt');
 const { Adapter, Device, Property, Event } = require('gateway-addon');
 
 const Devices = require('./devices');
 
 const identity = v => v;
+
+
+const path = require('path');
+var childProcess = require('child_process');
+
+var process
+
+function runScript(scriptPath, callback) {
+    console.log("in runScript");
+    // keep track of whether callback has been invoked to prevent multiple invocations
+    var invoked = false;
+
+    process = childProcess.fork(scriptPath);
+
+    // listen for errors as they may prevent the exit event from firing
+    process.on('error', function (err) {
+        console.log("error with child proces");
+        if (invoked) return;
+        invoked = true;
+        callback(err);
+    });
+
+    // execute the callback once the process has finished running
+    process.on('exit', function (code) {
+        console.log("exit in child process");
+        if (invoked) return;
+        invoked = true;
+        var err = code === 0 ? null : new Error('exit code ' + code);
+        callback(err);
+    });
+    console.log("runscript function exiting");
+    return
+}
+
+function delayed() {
+    // all the stuff you want to happen after that pause
+    console.log('DELAYED Blah blah blah blah extra-blah');
+}
+
 
 
 class MqttProperty extends Property {
@@ -63,21 +104,35 @@ class ZigbeeMqttAdapter extends Adapter {
   constructor(addonManager, manifest) {
     super(addonManager, 'ZigbeeMqttAdapter', manifest.name);
     this.config = manifest.moziot.config;
+    console.log(this.config);
     addonManager.addAdapter(this);
-
+    console.log("---constructing addon");
     this.client = mqtt.connect(this.config.mqtt);
     this.client.on('error', error => console.error('mqtt error', error));
     this.client.on('message', this.handleIncomingMessage.bind(this));
     this.client.subscribe(`${this.config.prefix}/bridge/config/devices`);
     this.client.subscribe(`${this.config.prefix}/+`);
     this.client.publish(`${this.config.prefix}/bridge/config/devices/get`);
+    
+    var that = this;
+    setTimeout(function () {
+        that.request_all_devices();
+    }, 10000);
+    console.log("subscribed to MQTT");
+  }
+
+  request_all_devices() {
+    console.log("I am time delayed");
+    this.client.publish(`${this.config.prefix}/bridge/config/devices/get`);
   }
 
   handleIncomingMessage(topic, data) {
-    const msg = JSON.parse(data.toString());
+      console.log("INCOMING MESSAGE");
+      const msg = JSON.parse(data.toString());
     
     // Here we add a new thing.
     if (topic.startsWith(`${this.config.prefix}/bridge/config/devices`)) {
+      console.log("ADDING DEVICE");
       for (const device of msg) {
         this.addDevice(device);
       }
@@ -150,19 +205,50 @@ class ZigbeeMqttAdapter extends Adapter {
     const device = new MqttDevice(this, info.friendly_name, description);
     this.handleDeviceAdded(device);
   }
-
+    
   startPairing(_timeoutSeconds) {
+    console.log("START PAIRING REQUESTED");
+    console.log(`${this.config.prefix}/bridge/config/devices/get`);
     this.client.publish(`${this.config.prefix}/bridge/config/devices/get`);
     // TODO: Set permitJoin
   }
 
   cancelPairing() {
+    console.log("CANCEL PAIRING");
     // TODO: Clear permitJoin
   }
 }
 
 function loadAdapter(addonManager, manifest, _errorCallback) {
-  new ZigbeeMqttAdapter(addonManager, manifest);
+    
+    new ZigbeeMqttAdapter(addonManager, manifest);
+    console.log("I am after new ZigbeeMqttAdapter(addonManager, manifest); in the loadAdapter function");
+    //console.log("zigbee2mqtt has started. Now starting the add-on.");
+    
+}
+//setTimeout(start_addon, 10000);
+
+console.log("before starting zigbee2mqtt");
+
+function start_zigbee2mqtt() {
+    console.log("I AM TIME DELAYED. Starting zigbee2mqtt");
 }
 
-module.exports = loadAdapter;
+
+runScript(path.resolve(__dirname, 'zigbee2mqtt','index.js'), function (err) {
+    //if (err) throw err;
+    console.log("ERROR SPOTTED")
+    console.log(err)
+    if (err){
+        childProcess.kill();
+        console.log("KILLED CHILD PROCESS")
+    }
+});
+
+var cleanExit = function() { process.exit() };
+process.on('SIGINT', cleanExit); // catch ctrl-c
+process.on('SIGTERM', cleanExit); // catch kill
+
+console.log("before load adapter");
+
+module.exports = loadAdapter; 

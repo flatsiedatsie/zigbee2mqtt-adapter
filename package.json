@@ -1,24 +1,26 @@
 {
   "name": "zigbee2mqtt-adapter",
   "display_name": "zigbee2mqtt adapter",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Brings all your zigbee devices to the gateway through mqtt bridge",
   "main": "index.js",
   "keywords": [
     "mozilla",
     "iot",
     "adapter",
-    "virtual"
+    "virtual",
+    "zigbee",
+    "mqtt"
   ],
-  "homepage": "https://github.com/kabbi/zigbee2mqtt-adapter",
+  "homepage": "https://github.com/flatsiedatsie/zigbee2mqtt-adapter",
   "author": "Mozilla IoT",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kabbi/zigbee2mqtt-adapter.git"
+    "url": "https://github.com/flatsiedatsie/zigbee2mqtt-adapter.git"
   },
   "bugs": {
-    "url": "https://github.com/kabbi/zigbee2mqtt-adapter/issues"
+    "url": "https://github.com/flatsiedatsie/zigbee2mqtt-adapter/issues"
   },
   "dependencies": {
     "ajv": "^6.10.2",
