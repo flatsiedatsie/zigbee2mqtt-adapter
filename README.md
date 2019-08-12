@@ -1,7 +1,9 @@
-Zigbee2Mqtt Adapter
+Zigbee2Mqtt Adapter - FORK
 -------------------
 
-This adapter for [WebThings Gateway by Mozilla](https://iot.mozilla.org/gateway/) allows to use awesome [zigbee2mqtt](http://zigbee2mqtt.io/) project to support lots of zigbee devices on a cheap `cc2531` usb stick zigbee dongle.
+This adapter for [WebThings Gateway by Mozilla](https://iot.mozilla.org/gateway/) allows to use the awesome [zigbee2mqtt](http://zigbee2mqtt.io/) project to support lots of zigbee devices on a cheap `cc2531` usb stick zigbee dongle.
+
+THIS CODE IS A FORK OF THE ORIGINAL ZIGBEE2MQTT ADAPTER
 
 Currently supported devices:
 - Aqara ZigBee Light Bulb
