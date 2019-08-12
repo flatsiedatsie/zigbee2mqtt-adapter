@@ -36,6 +36,7 @@
     "LICENSE",
     "SHA256SUMS",
     "index.js",
+    "build.sh",
     "zigbee2mqtt-adapter.js"
   ],
   "moziot": {
