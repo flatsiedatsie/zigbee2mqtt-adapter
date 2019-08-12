@@ -1,0 +1,41 @@
+2019-8-10 20:05:47 - info: Logging to directory: '/home/pi/.mozilla-iot/addons/zigbee2mqtt-adapter/zigbee2mqtt/data/log/2019-08-10.20-05-46'
+2019-8-10 20:05:47 - info: Starting zigbee2mqtt version 1.5.1 (commit #ac3b924)
+2019-8-10 20:05:47 - info: Starting zigbee-shepherd
+2019-8-10 20:05:49 - info: zigbee-shepherd started
+2019-8-10 20:05:49 - info: Coordinator firmware version: '20190608'
+2019-8-10 20:05:49 - info: Currently 1 devices are joined:
+2019-8-10 20:05:49 - info: 0x00158d00033b75e1 (0x00158d00033b75e1): MCCGQ11LM - Xiaomi Aqara door & window contact sensor (EndDevice)
+2019-8-10 20:05:49 - warn: `permit_join` set to  `true` in configuration.yaml.
+2019-8-10 20:05:49 - warn: Allowing new devices to join.
+2019-8-10 20:05:49 - warn: Set `permit_join` to `false` once you joined all devices.
+2019-8-10 20:05:49 - info: Zigbee: allowing new devices to join.
+2019-8-10 20:05:49 - info: Connecting to MQTT server at mqtt://localhost
+2019-8-10 20:05:49 - info: zigbee-shepherd ready
+2019-8-10 20:05:49 - info: Connected to MQTT server
+2019-8-10 20:05:49 - info: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'online'
+2019-8-10 20:05:49 - info: MQTT publish: topic 'zigbee2mqtt/0x00158d00033b75e1', payload '{"contact":true,"linkquality":52,"battery":100,"voltage":3015}'
+2019-8-10 20:05:49 - info: MQTT publish: topic 'zigbee2mqtt/bridge/config', payload '{"version":"1.5.1","commit":"ac3b924","coordinator":20190608,"log_level":"info","permit_join":true}'
+2019-8-10 20:05:55 - info: MQTT publish: topic 'zigbee2mqtt/bridge/config/devices', payload '[{"ieeeAddr":"0x00124b001936a025","type":"Coordinator"},{"ieeeAddr":"0x00158d00033b75e1","type":"EndDevice","model":"MCCGQ11LM","friendly_name":"0x00158d00033b75e1","nwkAddr":23961,"manufId":4151,"manufName":"LUMI","powerSource":"Battery","modelId":"lumi.sensor_magnet.aq2","hwVersion":2,"swBuildId":"3000-0001","dateCode":"20161128"}]'
+2019-8-10 20:05:55 - info: MQTT publish: topic 'zigbee2mqtt/bridge/log', payload '{"type":"devices","message":[{"ieeeAddr":"0x00124b001936a025","type":"Coordinator"},{"ieeeAddr":"0x00158d00033b75e1","type":"EndDevice","model":"MCCGQ11LM","friendly_name":"0x00158d00033b75e1","nwkAddr":23961,"manufId":4151,"manufName":"LUMI","powerSource":"Battery","modelId":"lumi.sensor_magnet.aq2","hwVersion":2,"swBuildId":"3000-0001","dateCode":"20161128"}]}'
+2019-8-10 20:08:29 - info: Successfully reenabled joining
+2019-8-10 20:11:09 - info: Successfully reenabled joining
+2019-8-10 20:13:49 - info: Successfully reenabled joining
+2019-8-10 20:16:29 - info: Successfully reenabled joining
+2019-8-10 20:19:09 - info: Successfully reenabled joining
+2019-8-10 20:21:49 - info: Successfully reenabled joining
+2019-8-10 20:24:29 - info: Successfully reenabled joining
+2019-8-10 20:27:09 - info: Successfully reenabled joining
+2019-8-10 20:29:49 - info: Successfully reenabled joining
+2019-8-10 20:32:29 - info: Successfully reenabled joining
+2019-8-10 20:35:09 - info: Successfully reenabled joining
+2019-8-10 20:37:49 - info: Successfully reenabled joining
+2019-8-10 20:40:29 - info: Successfully reenabled joining
+2019-8-10 20:43:09 - info: Successfully reenabled joining
+2019-8-10 20:45:49 - info: Successfully reenabled joining
+2019-8-10 20:48:29 - info: Successfully reenabled joining
+2019-8-10 20:49:30 - info: MQTT publish: topic 'zigbee2mqtt/0x00158d00033b75e1', payload '{"contact":true,"linkquality":70,"battery":100,"voltage":3025}'
+2019-8-10 20:51:09 - info: Successfully reenabled joining
+2019-8-10 20:53:49 - info: Successfully reenabled joining
+2019-8-10 20:55:46 - info: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'offline'
+2019-8-10 20:55:46 - info: Disconnecting from MQTT server
+2019-8-10 20:55:46 - info: zigbee-shepherd stopped

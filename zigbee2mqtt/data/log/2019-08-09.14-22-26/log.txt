@@ -1,0 +1,20 @@
+2019-8-9 14:22:26 - info: Logging to directory: '/home/pi/.mozilla-iot/addons/zigbee2mqtt-adapter/zigbee2mqtt/data/log/2019-08-09.14-22-26'
+2019-8-9 14:22:26 - info: Starting zigbee2mqtt version 1.5.1 (commit #ac3b924)
+2019-8-9 14:22:26 - info: Starting zigbee-shepherd
+2019-8-9 14:22:28 - info: zigbee-shepherd started
+2019-8-9 14:22:28 - info: Coordinator firmware version: '20190608'
+2019-8-9 14:22:28 - info: Currently 1 devices are joined:
+2019-8-9 14:22:28 - info: 0x00158d00033b75e1 (0x00158d00033b75e1): MCCGQ11LM - Xiaomi Aqara door & window contact sensor (EndDevice)
+2019-8-9 14:22:28 - warn: `permit_join` set to  `true` in configuration.yaml.
+2019-8-9 14:22:28 - warn: Allowing new devices to join.
+2019-8-9 14:22:28 - warn: Set `permit_join` to `false` once you joined all devices.
+2019-8-9 14:22:28 - info: Zigbee: allowing new devices to join.
+2019-8-9 14:22:28 - info: Connecting to MQTT server at mqtt://localhost
+2019-8-9 14:22:28 - info: zigbee-shepherd ready
+2019-8-9 14:22:28 - info: Connected to MQTT server
+2019-8-9 14:22:28 - info: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'online'
+2019-8-9 14:22:28 - info: MQTT publish: topic 'zigbee2mqtt/0x00158d00033b75e1', payload '{"contact":true,"linkquality":94,"battery":100,"voltage":3025}'
+2019-8-9 14:22:28 - info: MQTT publish: topic 'zigbee2mqtt/bridge/config', payload '{"version":"1.5.1","commit":"ac3b924","coordinator":20190608,"log_level":"info","permit_join":true}'
+2019-8-9 14:22:32 - info: MQTT publish: topic 'zigbee2mqtt/bridge/state', payload 'offline'
+2019-8-9 14:22:32 - info: Disconnecting from MQTT server
+2019-8-9 14:22:32 - info: zigbee-shepherd stopped
