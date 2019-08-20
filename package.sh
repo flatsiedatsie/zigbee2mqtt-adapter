@@ -1,22 +1,34 @@
 #!/bin/bash
 
-# Download the latest version of the zigbee2mqtt project
-#if [ -d zigbee2mqtt ]
-#then
-#    rm -rf zigbee2mqtt
-#    echo "Removed old zigbee2mqtt project"
-#fi
+set -e -x
 
-#echo "Downloading the latest version of zigbee2mqtt to sub directory"
-#git clone https://github.com/Koenkk/zigbee2mqtt.git
-
-# Install everything
-#echo "Getting all the dependencies for the add-on and for zigbee2mqtt"
-#npm install
-
+# Clean up
+rm -rf node_modules
 rm -f SHA256SUMS
-sha256sum -- package.json *.js build.sh LICENSE > SHA256SUMS
 
-echo "Packing..."
-npm pack
-echo "DONE"
+# Gather dependencies
+npm install --production
+
+# Download the latest version of the zigbee2mqtt project and gather its
+# dependencies
+git submodule update --remote --merge
+cd zigbee2mqtt
+git reset --hard
+git clean -Xdf
+npm install --production
+cd -
+
+# Generate checksums
+sha256sum package.json *.js LICENSE > SHA256SUMS
+find node_modules -type f -exec sha256sum {} \; >> SHA256SUMS
+find zigbee2mqtt -type f -exec sha256sum {} \; >> SHA256SUMS
+
+# Package everything up
+TARFILE=$(npm pack)
+tar xzf ${TARFILE}
+cp -r node_modules ./package
+cp -r zigbee2mqtt ./package
+tar czf ${TARFILE} package
+rm -rf package
+
+echo "Created ${TARFILE}"
