@@ -1,42 +1,45 @@
 {
   "name": "zigbee2mqtt-adapter",
   "display_name": "zigbee2mqtt adapter",
-  "version": "0.3.0",
+  "version": "0.2.6",
   "description": "Brings all your zigbee devices to the gateway through mqtt bridge",
   "main": "index.js",
   "keywords": [
     "mozilla",
     "iot",
     "adapter",
-    "virtual",
-    "zigbee",
-    "mqtt"
+    "virtual"
   ],
-  "homepage": "https://github.com/flatsiedatsie/zigbee2mqtt-adapter",
-  "author": "Mozilla IoT",
+  "homepage": "https://github.com/kabbi/zigbee2mqtt-adapter",
+  "author": "Kabbi",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/flatsiedatsie/zigbee2mqtt-adapter.git"
+    "url": "https://github.com/kabbi/zigbee2mqtt-adapter.git"
   },
   "bugs": {
-    "url": "https://github.com/flatsiedatsie/zigbee2mqtt-adapter/issues"
+    "url": "https://github.com/kabbi/zigbee2mqtt-adapter/issues"
+  },
+  "dependencies": {
+    "mqtt": "^2.18.8"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.2",
-    "eslint": "^6.2.1"
+    "eslint": "^4.19.1",
+    "sqlite3": "^4.0.6"
   },
   "files": [
     "LICENSE",
     "SHA256SUMS",
-    "devices.js",
+    "README.md",
+    "manifest.json",
     "index.js",
-    "simulator.js",
-    "zigbee2mqtt-adapter.js"
+    "zigbee2mqtt-adapter.js",
+    "devices.js",
+    "simulator.js"
   ],
   "moziot": {
     "api": {
-      "min": 2,
+      "min": 1,
       "max": 2
     },
     "plugin": true,
@@ -58,11 +61,5 @@
         }
       }
     }
-  },
-  "scripts": {
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "mqtt": "^3.0.0"
   }
 }

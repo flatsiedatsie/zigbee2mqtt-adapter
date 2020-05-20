@@ -1,3 +1,4 @@
+const mqtt = require('mqtt');
 const installAddon = require('./index');
 
 const manager = {
@@ -12,7 +13,7 @@ const manager = {
 const manifest = {
   moziot: {
     config: {
-      mqtt: 'mqtt://localhost',
+      mqtt: 'mqtt://keeper.local',
       prefix: 'zigbee2mqtt',
     },
   },
